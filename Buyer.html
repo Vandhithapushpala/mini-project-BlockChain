@@ -1,0 +1,756 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		.hi {
+			background-color: darksalmon;
+		}
+
+		#intro {
+			background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+			height: 100vh;
+		}
+
+		html {
+			/* background-image: url('data:image/jpeg;base64,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'); */
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		.bg-image {
+			/* background-image: url('data:image/jpeg;base64,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'); */
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+		}
+	</style>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+		integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+		integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+</head>
+
+<body onload="connectMetamask(),connectContract()">
+	<nav class="navbar navbar-light bg-primary fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#" style="color: antiquewhite;">
+				<h1>BUYER</h1>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+				aria-controls="offcanvasNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<a class="offcanvas-title" id="offcanvasNavbarLabel" href="Home.html">
+						<h5>HOME</h5>
+					</a>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item">
+							<a class="nav-link active" href="odersplaced.html">REQUESTS</a>
+						</li>
+						<!-- <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								VENDORS
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+								<li><a class="dropdown-item" href="Vendor1.html">VENDOR 1</a></li>
+								<li><a class="dropdown-item" href="Vendor2.html">VENDOR 2</a></li>
+
+							</ul>
+						</li> -->
+						<li class="nav-item">
+							<a class="nav-link active" href="AcceptedRequests.html">ACCEPTED REQUESTS</a>
+						</li>
+						<!-- <li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Dropdown
+				  </a>
+				  <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+					<li><a class="dropdown-item" href="#">Action</a></li>
+					<li><a class="dropdown-item" href="#">Another action</a></li>
+					<li>
+					  <hr class="dropdown-divider">
+					</li>
+					<li><a class="dropdown-item" href="#">Something else here</a></li>
+				  </ul>
+				</li> -->
+					</ul>
+					<!-- <form class="d-flex">
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			  </form> -->
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="bg-image">
+		<div class="container text-center">
+
+			<div class="row">
+				<div class="col">
+
+					Column
+				</div>
+				<div class="col-6">
+
+
+					<!-- <img class="bg-img" src="https://thumbs.dreamstime.com/b/spring-summer-season-abstract-nature-background-grass-blue-sky-back-49716369.jpg"> -->
+					<!-- <img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?cs=srgb&dl=pexels-miguel-%C3%A1-padri%C3%B1%C3%A1n-255379.jpg&fm=jpg" class="img-thumbnail" alt="..."> -->
+					<br>
+					<br>
+					<br>
+					<br>
+					<h1>SUPPLY REQUEST FORM:</h1>
+					<!-- <button onclick="connectMetamask()">CONNECT TO METAMASK</button> <br> -->
+					<p id="accountArea">Connection Status: NOT CONNECTED to Metamask </p>
+
+					<!-- <button onclick="connectContract()">CONNECT TO CONTRACT</button> <br> -->
+					<p id="contractArea">Connection Status: NOT CONNECTED to Smart Contract</p>
+
+
+
+					<!-- <input type="text" id="inputArea">  -->
+
+					<script>
+						let account;
+						const connectMetamask = async () => {
+							if (window.ethereum !== "undefined") {
+								const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+								account = accounts[0];
+								document.getElementById("accountArea").innerHTML = `Account is: ${account}`;
+							}
+
+						}
+
+						const connectContract = async () => {
+							const ABI = [
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "a",
+											"type": "string[][]"
+										}
+									],
+									"name": "save",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "a",
+											"type": "string[][]"
+										}
+									],
+									"name": "sendven1",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "b",
+											"type": "string[][]"
+										}
+									],
+									"name": "to",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "arr",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "get_pairs",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "key_val_pairs",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "reven1",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "revto",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "showcount",
+									"outputs": [
+										{
+											"internalType": "uint256[]",
+											"name": "",
+											"type": "uint256[]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "tt",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "ven1",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "ven2",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "we",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								}
+							]
+							const Address = "0x8e0C33a5B3C7A373DC89d760ad4626170f69E2C6";
+							window.web3 = await new Web3(window.ethereum);
+							window.contract = await new window.web3.eth.Contract(ABI, Address);
+							document.getElementById("contractArea").innerHTML = "Connection Status: Success";
+						}
+
+						// const readWord = async () => {
+						//     const data = await window.contract.methods.getFlower().call();
+						//     document.getElementById("dataArea").innerHTML = `Word is: ${data}`;
+						// }
+
+						const changeWord = async () => {
+							// const myEntry = document.getElementById("inputArea").value;
+							if (n1 == 0) {
+								await window.contract.methods.save(data).send({ from: account });
+								n1++;
+							}
+							else {
+								alert("noooo");
+							}
+
+						}
+						let s = 0;
+						const readWord = async () => {
+							str = "";
+
+							const ABI = [
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "a",
+											"type": "string[][]"
+										}
+									],
+									"name": "save",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "a",
+											"type": "string[][]"
+										}
+									],
+									"name": "sendven1",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "string[][]",
+											"name": "b",
+											"type": "string[][]"
+										}
+									],
+									"name": "to",
+									"outputs": [],
+									"stateMutability": "nonpayable",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "arr",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "get_pairs",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "key_val_pairs",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "reven1",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "revto",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "showcount",
+									"outputs": [
+										{
+											"internalType": "uint256[]",
+											"name": "",
+											"type": "uint256[]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [],
+									"name": "tt",
+									"outputs": [
+										{
+											"internalType": "string[][]",
+											"name": "",
+											"type": "string[][]"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "ven1",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "ven2",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								},
+								{
+									"inputs": [
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "",
+											"type": "uint256"
+										}
+									],
+									"name": "we",
+									"outputs": [
+										{
+											"internalType": "string",
+											"name": "",
+											"type": "string"
+										}
+									],
+									"stateMutability": "view",
+									"type": "function"
+								}
+							]
+							const Address = "0x8e0C33a5B3C7A373DC89d760ad4626170f69E2C6";
+							window.web3 = await new Web3(window.ethereum);
+							window.contract = await new window.web3.eth.Contract(ABI, Address);
+							const d = await window.contract.methods.showprice().call();
+							console.log(d);
+							if (s == 0) {
+								for (let i = 0; i < d.length; i++) {
+
+									str += `<tr><td><p>vendor ${i}</p></td><td>${d[i]}</td></tr>`;
+								}
+								document.getElementById("1").innerHTML += str;
+
+							}
+							s += 1;
+						}
+					</script>
+					<div class="container-fluid">
+						<button id="Add" type="button" class="btn btn-primary">ADD ITEMS</button>
+
+						<!-- <button id="Remove">Click to remove textbox</button> -->
+						<!-- <button id="see" class="fs-5">Confirm</button> -->
+						<div id="textboxDiv"></div>
+					</div>
+					<datalist id="browsers">
+						<option value="Banana">
+						<option value="Apple">
+						<option value="Orange">
+						<option value="Pineapple">
+						<option value="Kiwi">
+						<option value="Papapya">
+						<option value="Water melon">
+						<option value="Jack fruit">
+					</datalist>
+
+
+					<script>
+						var n = 0;
+						var n1 = 0;
+						var data = []; // initialize 2D array
+						let i = 0;
+						$(document).ready(function () {
+							$('#Add').on('click', function () {
+
+								$('#textboxDiv').append(
+									`<div class="wrapper"><span class="inline"><input type="text" placeholder="Item name" list="browsers" id="${i}"/><input type="number" placeholder="Quantity" id="${i}1"/></span></div>`
+
+								);
+								i++;
+							});
+							// $('#Remove').on('click', function () {
+							//   data.pop(); // remove last element from 2D array
+							//   $('#textboxDiv').children().last().remove();
+							// });
+							$('#see').on('click', function () {
+								if (n == 0 && n1 == 0) {
+									for (let j = 0; j < i; j++) {
+										textValue = document.getElementById(`${j}`).value; // get text input value
+										numValue = document.getElementById(`${j}1`).value;  // get number input value
+										var newData = [textValue, numValue]; // create new data array
+										data.push(newData); // add new data array to 2D array
+										console.log(data);
+									}
+									n++;
+									alert("if you are sure then click on send quote");
+
+								}
+								else {
+									alert("you cannot add now");
+								}
+
+							})
+						});
+
+
+					</script>
+					<div class="container-fluid">
+						<br>
+						<br>
+						<button type="button" class="btn btn-primary" id="see" class="fs-5">Confirm</button>
+						<br>
+
+						<button onclick="changeWord()" type="button" class="btn btn-success" class="hi"
+							class="fs-5">SEND REQUEST</button>
+						<br>
+						<table class="table" id="1">
+
+
+							<!-- <th scope="row">1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td> -->
+							<!-- </tbody><button onclick="readContract()">Check Requests</button> -->
+							<!-- <table id="myTable" class="table table-striped">
+		  <thead>
+			<tr>
+			  <th>VENDOR</th>
+			  <th>PRICE</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>Vendor1</td>
+			  <td>
+				<p id="dataArea"></p>
+			  </td>
+			</tr>
+		  </tbody>
+		</table> -->
+							<script>
+								const readContract = async () => {
+									var table = document.getElementById("myTable");
+									table.style.display = "table";
+									const da = await window.contract.methods.showprice().call();
+									document.getElementById("dataArea").innerHTML = da[da.length - 1];
+								}
+							</script>
+						</table>
+					</div>
+
+					<br>
+
+					<!-- <button onclick="readWord()" class="hi">ACCEPTED REQUESTS</button> <br> -->
+				</div>
+				<div class="col">
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+
+
+
+</body>
+
+</html>

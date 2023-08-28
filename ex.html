@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Button Example</title>
+    <!-- Load React and ReactDOM libraries -->
+    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <!-- Load Babel compiler to translate JSX into JS -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    
+    <button onclick="displayText()">Show text</button>
+    <script type="text/babel">
+      function displayText() {
+        // const newElement = React.createElement('h1', {}, 'Hello, World!');
+        // ReactDOM.render(newElement, document.getElementById('root')); 
+        const myElement = <h1> JSX!</h1>;
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(myElement);
+      }
+    </script>
+    <div id="root"></div>
+  </body>
+</html>
